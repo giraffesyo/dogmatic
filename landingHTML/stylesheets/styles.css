@@ -4,7 +4,7 @@ p {
 }
 
 header {
-  height: 330px;
+  height: 30vw;
   background-image: url(../images/eatingdogs-cropped.jpg);
   background-repeat: no-repeat;
   background-size: 100% auto;
