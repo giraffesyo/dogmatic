@@ -1,23 +1,13 @@
 import React, { PureComponent } from 'react'
-import { Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap'
-import { Navbar } from './Navbar'
-//import { logo } from 'dogmatic-logo.png'
+import { Container, Row, Col } from 'reactstrap'
+import { Navbar } from 'components/Navbar'
+import { Header } from 'components/Header'
 
 class Home extends PureComponent {
   render() {
     return (
-      <Container>
-        <Row>
-          <Col>
-            <Navbar />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <img/>>
-          </Col>
-        </Row>
-      </Container>
+      <Header></Header>
+
     )
   }
 }

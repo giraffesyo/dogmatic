@@ -11,6 +11,8 @@ import {
   DropdownToggle,
   DropdownMenu,
 } from 'reactstrap'
+import 'stylesheets/styles.css'
+import logo from 'images/dogmatic-logo.png'
 
 class Navbar extends React.PureComponent {
   constructor(props) {
@@ -31,9 +33,8 @@ class Navbar extends React.PureComponent {
     return (
       <Container>
         <Row>
-          <Col xs={0} sm={7}>
-          </Col>
-          <Col xs={12} sm={5}>
+          <Col xs={12}>
+            <img className="logo float-left" alt={'Dogmatic Logo'} src={logo} />
             <Nav>
               <NavItem>
                 <NavLink href="#">Marvel App</NavLink>
