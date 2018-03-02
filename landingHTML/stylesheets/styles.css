@@ -1,3 +1,16 @@
+table th{
+  padding: 5px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
+table td{
+  padding: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+
+}
+
 p {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
@@ -11,7 +24,7 @@ header {
 }
 
 .navbar-brand img {
-  height: 50px;
+  height: 10vh;
 }
 
 .main h1 {
@@ -38,17 +51,7 @@ header {
     -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-#elevator.card-img-bottom {
-height: 100%;
-background-image: url(../images/bigbowl.jpg) center no-repeat;
-background-size: cover;
-}
 
-
-
-.card-img-bottom {
-  color: #fff;
-  height: 15rem;
-  background: url(../images/bigbowl.jpg) center no-repeat;
-  background-size: cover;
+.iphone-screen {
+  text-align:center;
 }
