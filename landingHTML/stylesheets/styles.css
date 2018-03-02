@@ -1,0 +1,54 @@
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+header {
+  height: 330px;
+  background-image: url(../images/eatingdogs-cropped.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+.main h1 {
+  text-align: center;
+  color: rgb(240, 180, 0);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+  -webkit-text-stroke: 1px black;
+  color: rgb(240, 180, 0);
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.main h2 {
+  text-align: center;
+  color: rgb(40, 170, 200);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  -webkit-text-stroke: 1px black;
+  color: white;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+#elevator.card-img-bottom {
+height: 100%;
+background-image: url(../images/bigbowl.jpg) center no-repeat;
+background-size: cover;
+}
+
+
+
+.card-img-bottom {
+  color: #fff;
+  height: 15rem;
+  background: url(../images/bigbowl.jpg) center no-repeat;
+  background-size: cover;
+}
