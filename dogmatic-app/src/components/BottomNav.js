@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap'
 
 export const BottomNav = () => (
   <Row
-    className="text-center mainRow"
+    className="text-center bottomRow"
   >
     <Col>
       <a href="/">

@@ -1,4 +1,4 @@
-.mainRow{
+.bottomRow{
   color: rgb(243, 178, 36);
   margin: 0;
   padding: 0;
@@ -12,20 +12,20 @@
   line-height: 1;
 }
 
-a {
+.bottomRow a {
   color: rgb(243, 178, 36);
 }
 
-a:active {
+.bottomRow a:active {
   color: rgb(243, 178, 36);
   text-decoration: none;
 }
 
-.col {
+.bottomRow .col {
   border-right: 1px solid rgb(243, 178, 36);
   box-sizing: border-box;
 }
 
-.finalCol {
+.bottomRow .finalCol {
   border-right: none;
 }
