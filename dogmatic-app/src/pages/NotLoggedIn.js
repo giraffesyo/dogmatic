@@ -30,10 +30,10 @@ class NotLoggedIn extends React.PureComponent {
 const Styles = {
   button: {
     margin: '4px',
-    'background-color': 'rgb(26, 154, 189)',
-    'border-color': 'none',
+    backgroundColor: 'rgb(26, 154, 189)',
+    borderColor: 'none',
     color: 'rgb(243, 178, 36)',
-    'border-radius': 0,
+    borderRadius: 0,
   },
 }
 
