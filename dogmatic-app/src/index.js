@@ -5,13 +5,17 @@ import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 
 
+
 import App from 'App'
 import { Login } from 'pages/Login'
+import { Register } from 'pages/Register'
+
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
       <Route exact path="/" component={App} />
       <Route component={App} />
     </Switch>

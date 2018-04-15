@@ -17,7 +17,7 @@ class NotLoggedIn extends React.PureComponent {
         </Row>
         <Row style={Styles.row}>
           <Col>
-            <Button block style={Styles.button}>
+            <Button href="/register" block style={Styles.button}>
               Sign Up
             </Button>
           </Col>
