@@ -1,11 +1,9 @@
 import React from 'react'
+import { Header } from 'components/Header'
 
 class Home extends React.PureComponent {
-
-  render(){
-    return (
-      <div>Hello world.</div>
-    )
+  render() {
+    return (<Header></Header>)
   }
 }
 

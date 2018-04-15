@@ -12,7 +12,7 @@ function Logo(props) {
       </Row>
       <Row>
         <Col>
-          <p style={{ color: 'rgb(26, 154, 189)' }}>It's not just automatic:</p>
+          <p style={{ color: 'rgb(26, 154, 189)' }}>It's not just automatic</p>
         </Col>
       </Row>
       <Row style={{marginBottom: props.marginBottom}}>
