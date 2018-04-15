@@ -1,28 +1,13 @@
 import React from 'react'
-import Logo from 'images/dogmatic-logo.png'
 import { Container, Row, Col, Button } from 'reactstrap'
+
+import { Logo } from 'components/Logo'
 
 class NotLoggedIn extends React.PureComponent {
   render() {
     return (
       <Container className="text-center">
-        <Row>
-          <Col>
-            <img className="img-fluid" src={Logo} alt="Dogmatic Logo" />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p style={{ color: 'rgb(26, 154, 189)' }}>
-              It's not just automatic:
-            </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p style={{ color: 'rgb(243, 178, 36)' }}>It's Dogmatic.</p>
-          </Col>
-        </Row>
+        <Logo />
         <Row>
           <Col>
             <Button block style={Styles.button}>
