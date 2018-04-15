@@ -1,9 +1,10 @@
 import React from 'react'
-import { Home } from 'components/Home'
+import { Login } from 'components/Login'
+import { NotLoggedIn } from 'components/NotLoggedIn'
 
 class App extends React.PureComponent {
   render() {
-    return <Home />
+    return <NotLoggedIn />
   }
 }
 
