@@ -2,7 +2,7 @@ import React from 'react'
 import LogoImage from 'images/dogmatic-logo.png'
 import { Row, Col } from 'reactstrap'
 
-function Logo() {
+function Logo(props) {
   return (
     <React.Fragment>
       <Row>
@@ -15,7 +15,7 @@ function Logo() {
           <p style={{ color: 'rgb(26, 154, 189)' }}>It's not just automatic:</p>
         </Col>
       </Row>
-      <Row>
+      <Row style={{marginBottom: props.marginBottom}}>
         <Col>
           <p style={{ color: 'rgb(243, 178, 36)' }}>It's Dogmatic.</p>
         </Col>
