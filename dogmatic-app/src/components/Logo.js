@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap'
 function Logo(props) {
   return (
     <React.Fragment>
-      <Row style={{height: 230}}>
+      <Row>
         <Col>
           <img className="img-fluid" src={LogoImage} alt="Dogmatic Logo" />
         </Col>
