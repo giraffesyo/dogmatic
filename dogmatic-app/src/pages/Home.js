@@ -7,6 +7,7 @@ class Home extends React.PureComponent {
     return (
       <div>
         <Header />
+        <BottomNav />
       </div>
     )
   }

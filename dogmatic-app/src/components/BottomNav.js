@@ -1,13 +1,13 @@
 import React from 'react'
+import 'components/BottomNav.css'
 import { Row, Col } from 'reactstrap'
 
 export const BottomNav = () => (
   <Row
-    className="text-center"
-    style={styles}
+    className="text-center mainRow"
   >
     <Col>
-      <a>
+      <a href="/">
         <Row>
           <Col>
             <span style={{ fontSize: 48 }} className="fa fa-home" />
@@ -33,7 +33,7 @@ export const BottomNav = () => (
     <Col>
       <a>
         <Row>
-          <Col>
+          <Col className="finalCol">
             <span style={{ fontSize: 48 }} className="fa fa-cog" />
           </Col>
         </Row>
@@ -44,16 +44,3 @@ export const BottomNav = () => (
     </Col>
   </Row>
 )
-
-const styles = {
-  color: 'rgb(243, 178, 36)',
-  margin: 0,
-  padding: 0,
-  height: 85,
-  width: '100vw',
-  position: 'absolute',
-  bottom: 0,
-  backgroundColor: 'rgb(26, 154, 189)',
-  fontSize: 24,
-  lineHeight: 1,
-}
