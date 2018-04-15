@@ -7,15 +7,15 @@ class NotLoggedIn extends React.PureComponent {
   render() {
     return (
       <Container className="text-center">
-        <Logo />
-        <Row>
+        <Logo marginBottom={'20vh'} />
+        <Row style={Styles.row}>
           <Col>
-            <Button block style={Styles.button}>
+            <Button href="/login" block style={Styles.button}>
               Log In
             </Button>
           </Col>
         </Row>
-        <Row>
+        <Row style={Styles.row}>
           <Col>
             <Button block style={Styles.button}>
               Sign Up
@@ -28,8 +28,12 @@ class NotLoggedIn extends React.PureComponent {
 }
 
 const Styles = {
+  row: {
+    margin: 8,
+  },
   button: {
-    margin: '4px',
+    width: 100,
+    margin: '0 auto',
     backgroundColor: 'rgb(26, 154, 189)',
     borderColor: 'none',
     color: 'rgb(243, 178, 36)',
