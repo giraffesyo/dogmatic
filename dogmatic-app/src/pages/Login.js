@@ -62,7 +62,7 @@ class Login extends React.PureComponent {
             </Button>
           </Col>
         </Row>
-        <a style={Styles.backButton} className="fa fa-arrow-circle-o-left">
+        <a href="/" style={Styles.backButton} className="fa fa-arrow-circle-o-left">
           <div className="sr-only">Back</div>
         </a>
       </Container>
