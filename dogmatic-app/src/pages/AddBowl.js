@@ -112,7 +112,7 @@ class AddBowl extends React.PureComponent {
           </Row>
           <Row>
             {icons.map((icon, i) => (
-              <Col xs={3}>
+              <Col xs={3} key={'icon-' + i}>
                 <img
                   alt={`Icon of dog number ${i}`}
                   style={
@@ -126,7 +126,6 @@ class AddBowl extends React.PureComponent {
                   }
                   onClick={chooseIcon}
                   id={i}
-                  key={'icon-' + i}
                   src={icon}
                 />
               </Col>
