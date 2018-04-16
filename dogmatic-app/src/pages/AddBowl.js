@@ -69,7 +69,7 @@ class AddBowl extends React.PureComponent {
     const { name, err } = this.state
     const { handleNameChange, chooseIcon, addDog } = this
     return (
-      <div>
+      <Col>
         <Header />
         <Container style={{ color: 'rgb(26, 154, 189)', marginTop: '5vh' }}>
           <Row>
@@ -107,7 +107,10 @@ class AddBowl extends React.PureComponent {
 
           <Row>
             <Col>
-              <h2>Icon:</h2>
+              <h2>Icon:</h2></Col>
+              </Row>
+              <Row>
+                <Col>
               {icons.map((icon, i) => (
                 <img
                   alt={`Icon of dog number ${i}`}
@@ -116,8 +119,9 @@ class AddBowl extends React.PureComponent {
                       ? {
                           border: '2px solid rgb(243, 178, 36)',
                           borderRadius: 15,
+                          height: '25%',
                         }
-                      : {}
+                      : {height: '25%'}
                   }
                   onClick={chooseIcon}
                   id={i}
@@ -125,8 +129,9 @@ class AddBowl extends React.PureComponent {
                   src={icon}
                 />
               ))}
-            </Col>
-          </Row>
+              </Col>
+              </Row>
+
           <Row>
             <Col xs={{ offset: 8, size: 2 }} style={{ marginTop: 20 }}>
               <Button onClick={addDog} block style={Styles.button}>
@@ -137,7 +142,7 @@ class AddBowl extends React.PureComponent {
           {err==="success" ? <Redirect to="/mybowls" /> : null}
         </Container>
         <BottomNav />
-      </div>
+      </Col>
     )
   }
 }
