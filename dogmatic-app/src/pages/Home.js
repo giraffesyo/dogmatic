@@ -7,35 +7,6 @@ import { BottomNav } from 'components/BottomNav'
 import { Bowls } from 'components/Bowls'
 import { Redirect } from 'react-router-dom'
 
-/*
-[
-        {
-          name: 'Joe',
-          icon: 1,
-          waterLevel: 25,
-          foodLevel: 50,
-        },
-        {
-          name: 'Jessica',
-          icon: 2,
-          waterLevel: 50,
-          foodLevel: 80,
-        },
-        {
-          name: 'Josh',
-          icon: 0,
-          waterLevel: 50,
-          foodLevel: 60,
-        },
-        {
-          name: 'Emily',
-          icon: 0,
-          waterLevel: 50,
-          foodLevel: 10,
-        },
-      ]
-*/
-
 class Home extends React.PureComponent {
   state = {
     currentUser: '',
