@@ -19,28 +19,27 @@ class About extends React.PureComponent {
         >
           <Row>
             <Col>
-              <Row>
-                <Col>
-                  <h1 style={{ color: 'rgb(243, 178, 36)' }}>About Us</h1>
-                </Col>
-                <Col>
-                  <a
-                    style={{
-                      fontSize: '64px',
-                      color: 'rgb(243, 178, 36)',
-                      position: 'relative',
-                      float: 'right',
-                      paddingLeft: 16,
-                      paddingBottom: 16,
-                    }}
-                    href="/options"
-                    className="fa fa-arrow-circle-o-left"
-                  >
-                    <div className="sr-only">Back</div>
-                  </a>
-                </Col>
-              </Row>
-
+              <h1 style={{ color: 'rgb(243, 178, 36)' }}>About Us</h1>
+            </Col>
+            <Col>
+              <a
+                style={{
+                  fontSize: '64px',
+                  color: 'rgb(243, 178, 36)',
+                  position: 'relative',
+                  float: 'right',
+                  paddingLeft: 16,
+                  paddingBottom: 16,
+                }}
+                href="/options"
+                className="fa fa-arrow-circle-o-left"
+              >
+                <div className="sr-only">Back</div>
+              </a>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
               <p>
                 Taking care of a pet can be a really difficult and
                 time-consuming task. Worrying about whether or not your pet has
@@ -53,7 +52,6 @@ class About extends React.PureComponent {
             </Col>
           </Row>
         </Container>
-
         <BottomNav />
       </div>
     )
