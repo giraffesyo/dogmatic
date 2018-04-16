@@ -97,7 +97,7 @@ class Register extends React.PureComponent {
 
     return (
       <Container className="text-center">
-        <Logo/>
+        <Logo />
         <Row>
           <Col>
             <Alert color={err}>{message}</Alert>

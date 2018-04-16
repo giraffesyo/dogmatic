@@ -9,25 +9,27 @@ import {
   Label,
   Input,
 } from 'reactstrap'
+import localForage from 'localforage'
 
 import { Logo } from 'components/Logo'
 
 class Login extends React.PureComponent {
-  state = { users: {}, username: "", password: "" }
+  state = { users: {}, username: '', password: '' }
+
+  componentDidMount() {
+    localForage.getItem('users').then(users => this.setState({ users }))
+  }
 
   login = () => {
-    const {username, password} = this.state
-    
+    const { username, password } = this.state
   }
 
-  onUsernameChange = (e) =>
-  {
-    this.setState({username: e.target.value})
+  onUsernameChange = e => {
+    this.setState({ username: e.target.value })
   }
 
-  onPasswordChange = (e) =>
-  {
-    this.setState({password: e.target.value})
+  onPasswordChange = e => {
+    this.setState({ password: e.target.value })
   }
 
   render() {
