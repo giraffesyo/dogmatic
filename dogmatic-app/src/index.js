@@ -16,7 +16,7 @@ import { AddBowl } from 'pages/AddBowl'
 
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/app">
     <Switch>
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
