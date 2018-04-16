@@ -8,20 +8,44 @@ import {
   FormGroup,
   Label,
   Input,
+  Alert,
 } from 'reactstrap'
 import localForage from 'localforage'
+import { Redirect } from 'react-router-dom'
 
 import { Logo } from 'components/Logo'
 
 class Login extends React.PureComponent {
-  state = { users: {}, username: '', password: '' }
+  state = { username: '', password: '', err: '', message: '' }
 
-  componentDidMount() {
-    localForage.getItem('users').then(users => this.setState({ users }))
-  }
-
-  login = () => {
+  login = async () => {
     const { username, password } = this.state
+    if (!username) {
+      this.setState({ err: 'warning', message: 'You must enter a username' })
+      return
+    } else if (!password) {
+      this.setState({ err: 'warning', message: 'You must enter a password' })
+      return
+    }
+    const users = await localForage.getItem('users')
+
+    if (users) {
+      if (!(username in users)) {
+        this.setState({ err: 'danger', message: 'Incorrect Username' }) //account not registered
+      } else if (users[username].password === password) {
+        await localForage
+          .setItem('currentUser', username)
+          .then(() =>
+            this.setState({ err: 'success', message: 'Success, logging in...' })
+          )
+      } else {
+        this.setState({ err: 'danger', message: 'Incorrect Password' })
+      }
+    }
+    //there are no accounts
+    else {
+      this.setState({ err: 'danger', message: 'You are not registered.' })
+    }
   }
 
   onUsernameChange = e => {
@@ -38,10 +62,15 @@ class Login extends React.PureComponent {
     const inputSize = 7
 
     const { login, onPasswordChange, onUsernameChange } = this
-    const { username, password } = this.state
+    const { username, password, err, message } = this.state
     return (
       <Container className="text-center">
-        <Logo marginBottom={'5vh'} />
+        <Logo />
+        <Row>
+          <Col>
+            <Alert color={err}>{message}</Alert>
+          </Col>
+        </Row>
         <Row>
           <Col className="text-left">
             <Form>
@@ -95,6 +124,7 @@ class Login extends React.PureComponent {
         >
           <div className="sr-only">Back</div>
         </a>
+        {err === 'success' ? <Redirect to="/home" push /> : null}
       </Container>
     )
   }
