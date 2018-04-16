@@ -117,6 +117,7 @@ class Register extends React.PureComponent {
                 <Col xs={inputSize}>
                   <Input
                     onChange={onNameChange}
+                    value={name}
                     id="userName"
                     placeholder="John Appleseed"
                   />
@@ -129,6 +130,7 @@ class Register extends React.PureComponent {
                 <Col xs={inputSize}>
                   <Input
                     onChange={onUsernameChange}
+                    value={username}
                     type="email"
                     id="userEmail"
                     placeholder="example@domain.com"
@@ -144,6 +146,7 @@ class Register extends React.PureComponent {
                 </Label>
                 <Col xs={inputSize}>
                   <Input
+                    value={password}
                     onChange={onPasswordChange}
                     type="password"
                     id="userPassword"
