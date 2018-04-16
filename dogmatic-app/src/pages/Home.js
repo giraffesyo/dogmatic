@@ -1,16 +1,13 @@
 import React from 'react'
+import localForage from 'localforage'
 import { Container, Row, Col } from 'reactstrap'
 
 import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
 import { Bowls } from 'components/Bowls'
 
-class Home extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      user: {},
-      dogs: [
+/*
+[
         {
           name: 'Joe',
           icon: 1,
@@ -35,7 +32,15 @@ class Home extends React.PureComponent {
           waterLevel: 50,
           foodLevel: 10,
         },
-      ],
+      ]
+*/
+
+class Home extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentUser: '',
+      dogs: [],
     }
   }
 
@@ -65,17 +70,30 @@ class Home extends React.PureComponent {
 
   refillWater = index => this.setWater(index, 100)
 
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      const { dogs } = this.state
-      if (dogs.length < 1 || Math.random() < 0.8) return
-      const index = Math.floor(dogs.length * Math.random())
-      if (Math.random() >= 0.5) {
-        this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
-      } else {
-        this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
-      }
-    }, 100)
+  async componentDidMount() {
+    await localForage
+      .getItem('currentUser')
+      .then(currentUser => this.setState({ currentUser }))
+    const { currentUser } = this.state
+    //if not logged in
+    if (!currentUser) {
+      console.log('not logged in') //TODO: bring us to the login page instead
+    } else {
+      localForage
+        .getItem('users')
+        .then(users => this.setState({ dogs: users[currentUser].dogs }))
+
+      this.interval = setInterval(() => {
+        const { dogs } = this.state
+        if (dogs.length < 1 || Math.random() < 0.8) return
+        const index = Math.floor(dogs.length * Math.random())
+        if (Math.random() >= 0.5) {
+          this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
+        } else {
+          this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
+        }
+      }, 100)
+    }
   }
 
   render() {
