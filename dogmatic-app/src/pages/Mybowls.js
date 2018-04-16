@@ -96,11 +96,31 @@ class Mybowls extends React.PureComponent {
               <BowlsMB dogs={dogs} />
             </Col>
           </Row>
+          <Row>
+            <Col>
+            <a
+          href="/"
+          style={Styles.Add}
+          className="fa fa-plus"
+        >
+          <div className="sr-only">Add bowl</div>
+        </a>
+            </Col>
+          </Row>
         </Container>
         <BottomNav />
       </div>
     )
   }
 }
+
+const Styles = {
+  Add: {
+    fontSize: '64px',
+    color: 'rgb(243, 178, 36)',
+    paddingLeft: 16,
+    paddingBottom: 16,
+  }}
+
 
 export { Mybowls }
