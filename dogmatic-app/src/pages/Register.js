@@ -71,7 +71,7 @@ class Register extends React.PureComponent {
     updatedUsers[username] = {
       name,
       password,
-      dogs: [{ name: 'Fido', icon: '1', waterLevel: 0, foodLevel: 100 }],
+      dogs: [],
     }
     await localForage
       .setItem('users', updatedUsers)
