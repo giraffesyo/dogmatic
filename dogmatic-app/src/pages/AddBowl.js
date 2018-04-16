@@ -10,6 +10,8 @@ import {
   Button,
 } from 'reactstrap'
 
+import { Redirect } from 'react-router-dom'
+
 import localForage from 'localforage'
 
 import { Header } from 'components/Header'
@@ -56,13 +58,15 @@ class AddBowl extends React.PureComponent {
           waterLevel: 0,
           foodLevel: 0,
         })
-        localForage.setItem('users', users).then( this.setState({err: 'sucess'}))
+        localForage
+          .setItem('users', users)
+          .then(this.setState({ err: 'success' }))
       })
     }
   }
   render() {
     const currentIcon = this.state.icon
-    const { name } = this.state
+    const { name, err } = this.state
     const { handleNameChange, chooseIcon, addDog } = this
     return (
       <div>
@@ -130,6 +134,7 @@ class AddBowl extends React.PureComponent {
               </Button>
             </Col>
           </Row>
+          {err==="success" ? <Redirect to="/mybowls" /> : null}
         </Container>
         <BottomNav />
       </div>
