@@ -171,7 +171,7 @@ class Register extends React.PureComponent {
         >
           <div className="sr-only">Back</div>
         </Link>
-        {err === 'success' ? <Redirect to="/mybowls" push /> : null}
+        {err === 'success' ? <Redirect to="/addbowl" push /> : null}
       </Container>
     )
   }
