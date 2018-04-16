@@ -16,7 +16,6 @@ class Options extends React.PureComponent {
   }
 
   componentDidMount() {
-    localForage.setDriver(localForage.LOCALSTORAGE)
     localForage.getItem('currentUser').then(currentUser =>
       localForage.getItem('users').then(users =>
         this.setState({

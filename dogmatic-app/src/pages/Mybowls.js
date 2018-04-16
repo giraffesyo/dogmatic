@@ -6,7 +6,6 @@ import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
 import { BowlsMB } from 'components/Bowls'
 
-
 class Mybowls extends React.PureComponent {
   state = {
     currentUser: '',
@@ -52,7 +51,6 @@ class Mybowls extends React.PureComponent {
   }
 
   async componentDidMount() {
-    localForage.setDriver(localForage.LOCALSTORAGE)
     await localForage
       .getItem('currentUser')
       .then(currentUser => this.setState({ currentUser }))
@@ -65,16 +63,25 @@ class Mybowls extends React.PureComponent {
         .getItem('users')
         .then(users => this.setState({ dogs: users[currentUser].dogs }))
 
-      this.interval = setInterval(() => {
-        const { dogs } = this.state
-        if (dogs.length < 1 || Math.random() < 0.9) return
-        const index = Math.floor(dogs.length * Math.random())
-        if (Math.random() >= 0.5) {
-          this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
-        } else {
-          this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
-        }
-      }, 100)
+      if (this.interval == null) {
+        this.interval = setInterval(() => {
+          const { dogs } = this.state
+          if (dogs.length < 1 || Math.random() < 0.9) return
+          const index = Math.floor(dogs.length * Math.random())
+          if (Math.random() >= 0.5) {
+            this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
+          } else {
+            this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
+          }
+        }, 100)
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.interval != null) {
+      clearInterval(this.interval)
+      this.interval = null
     }
   }
 

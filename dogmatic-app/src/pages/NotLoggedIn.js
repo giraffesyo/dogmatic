@@ -1,10 +1,19 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'reactstrap'
-
+import localForage from 'localforage'
+import {Redirect} from 'react-router-dom'
 import { Logo } from 'components/Logo'
 
 class NotLoggedIn extends React.PureComponent {
+
+  state = {currentUser: ''}
+
+  componentDidMount(){
+    localForage.getItem('currentUser').then(currentUser => this.setState({currentUser}))
+  }
+
   render() {
+    const {currentUser} = this.state
     return (
       <Container className="text-center">
         <Logo marginBottom={'20vh'} />
@@ -22,6 +31,7 @@ class NotLoggedIn extends React.PureComponent {
             </Button>
           </Col>
         </Row>
+        {currentUser?<Redirect to="/home"></Redirect>: null}
       </Container>
     )
   }

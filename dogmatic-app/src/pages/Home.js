@@ -44,7 +44,7 @@ class Home extends React.PureComponent {
   }
 
   setFood = (index, amount) => {
-    const { dogs } = this.state
+    const { dogs, currentUser } = this.state
     this.setState({
       dogs: [
         ...dogs.slice(0, index),
@@ -52,12 +52,20 @@ class Home extends React.PureComponent {
         ...dogs.slice(index + 1),
       ],
     })
+    const { foodLevel } = this.state.dogs[index]
+    localForage.getItem('users').then(users => {
+      users[currentUser].dogs[index] = {
+        ...users[currentUser].dogs[index],
+        foodLevel,
+      }
+      localForage.setItem('users', users)
+    })
   }
 
   refillFood = index => this.setFood(index, 100)
 
   setWater = (index, amount) => {
-    let { dogs } = this.state
+    let { dogs, currentUser } = this.state
     this.setState({
       dogs: [
         ...dogs.slice(0, index),
@@ -65,12 +73,19 @@ class Home extends React.PureComponent {
         ...dogs.slice(index + 1),
       ],
     })
+    const { waterLevel } = this.state.dogs[index]
+    localForage.getItem('users').then(users => {
+      users[currentUser].dogs[index] = {
+        ...users[currentUser].dogs[index],
+        waterLevel,
+      }
+      localForage.setItem('users', users)
+    })
   }
 
   refillWater = index => this.setWater(index, 100)
 
   async componentDidMount() {
-    localForage.setDriver(localForage.LOCALSTORAGE)
     await localForage
       .getItem('currentUser')
       .then(currentUser => this.setState({ currentUser }))
@@ -83,35 +98,27 @@ class Home extends React.PureComponent {
         .getItem('users')
         .then(users => this.setState({ dogs: users[currentUser].dogs }))
 
-      this.interval = setInterval(() => {
-        const { dogs } = this.state
-        if (dogs.length < 1 || Math.random() < 0.9) return
-        const index = Math.floor(dogs.length * Math.random())
-        if (Math.random() >= 0.5) {
-          this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
-          const { waterLevel } = this.state.dogs[index]
-          localForage.getItem('users').then(users => {
-            users[currentUser].dogs[index] = {
-              ...users[currentUser].dogs[index],
-              waterLevel,
-            }
-            localForage.setItem('users', users)
-          })
-        } else {
-          this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
-          const { foodLevel } = this.state.dogs[index]
-          localForage.getItem('users').then(users => {
-            users[currentUser].dogs[index] = {
-              ...users[currentUser].dogs[index],
-              foodLevel,
-            }
-            localForage.setItem('users', users)
-          })
-        }
-      }, 100)
+      if (this.interval == null) {
+        this.interval = setInterval(() => {
+          const { dogs } = this.state
+          if (dogs.length < 1 || Math.random() < 0.9) return
+          const index = Math.floor(dogs.length * Math.random())
+          if (Math.random() >= 0.5) {
+            this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
+          } else {
+            this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
+          }
+        }, 100)
+      }
     }
   }
 
+  componentWillUnmount() {
+    if (this.interval != null) {
+      clearInterval(this.interval)
+      this.interval = null
+    }
+  }
   render() {
     const { dogs, loggedIn } = this.state
     const { refillFood, refillWater } = this

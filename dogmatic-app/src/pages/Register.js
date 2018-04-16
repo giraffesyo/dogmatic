@@ -26,7 +26,6 @@ class Register extends React.PureComponent {
   }
 
   async componentDidMount() {
-    localForage.setDriver(localForage.LOCALSTORAGE)
     localForage
       .getItem('users')
       .then(users => this.setState({ users }))
