@@ -8,28 +8,111 @@ import {
   FormGroup,
   Label,
   Input,
+  Alert,
 } from 'reactstrap'
+import localForage from 'localforage'
+import { Redirect } from 'react-router-dom'
 
 import { Logo } from 'components/Logo'
 
 class Register extends React.PureComponent {
+  state = {
+    users: {},
+    name: '',
+    username: '',
+    password: '',
+    message: '',
+    err: '',
+  }
+
+  async componentDidMount() {
+    localForage
+      .getItem('users')
+      .then(users => this.setState({ users }))
+      .catch(err => {
+        this.setState({ message: err })
+      })
+  }
+
+  onNameChange = e => {
+    this.setState({ name: e.target.value })
+  }
+
+  onUsernameChange = e => {
+    this.setState({ username: e.target.value })
+  }
+
+  onPasswordChange = e => {
+    this.setState({ password: e.target.value })
+  }
+
+  register = () => {
+    const { users, username, name, password } = this.state
+    if (!username) {
+      this.setState({ err: 'danger', message: 'Username cannot be blank' })
+      return
+    }
+    if (!name) {
+      this.setState({ err: 'danger', message: 'Name cannot be blank' })
+      return
+    }
+    if (!password) {
+      this.setState({ err: 'danger', message: 'Password cannot be blank' })
+      return
+    }
+    if (users) {
+      if (username in users) {
+        const message = `It looks like ${username} is already an existing account.`
+        this.setState({ err: 'danger', message })
+        return
+      }
+    }
+    const updatedUsers = { ...users }
+    updatedUsers[username] = { name, password, dogs: {} }
+    localForage
+      .setItem('users', updatedUsers)
+      .then(() =>
+        localForage.setItem('currentUser', username).then(
+          this.setState({
+            message: 'Successfully registered!',
+            err: 'success',
+          })
+        )
+      )
+      .catch(() =>
+        this.setState({
+          err: 'danger',
+          message: 'Failed to register, please try again...',
+        })
+      )
+  }
+
   render() {
-    let offset = 1
-    let labelSize = 3
-    let inputSize = 7
+    const offset = 1
+    const labelSize = 3
+    const inputSize = 7
+
+    const { register, onPasswordChange, onUsernameChange, onNameChange } = this
+    const { name, username, password, message, err } = this.state
+
     return (
       <Container className="text-center">
-        <Logo marginBottom={'5vh'} />
+        <Logo/>
+        <Row>
+          <Col>
+            <Alert color={err}>{message}</Alert>
+          </Col>
+        </Row>
         <Row>
           <Col className="text-left">
             <Form>
-            <FormGroup row>
+              <FormGroup row>
                 <Label xs={{ offset: offset, size: labelSize }} for="userName">
                   Name:
                 </Label>
                 <Col xs={inputSize}>
                   <Input
-                    name="name"
+                    onChange={onNameChange}
                     id="userName"
                     placeholder="John Appleseed"
                   />
@@ -41,8 +124,8 @@ class Register extends React.PureComponent {
                 </Label>
                 <Col xs={inputSize}>
                   <Input
+                    onChange={onUsernameChange}
                     type="email"
-                    name="email"
                     id="userEmail"
                     placeholder="example@domain.com"
                   />
@@ -57,8 +140,8 @@ class Register extends React.PureComponent {
                 </Label>
                 <Col xs={inputSize}>
                   <Input
+                    onChange={onPasswordChange}
                     type="password"
-                    name="password"
                     id="userPassword"
                     placeholder="password"
                   />
@@ -69,14 +152,19 @@ class Register extends React.PureComponent {
         </Row>
         <Row style={{ marginTop: '5vh' }}>
           <Col>
-            <Button block style={Styles.button}>
+            <Button onClick={register} block style={Styles.button}>
               Sign Up
             </Button>
           </Col>
         </Row>
-        <a href="/" style={Styles.backButton} className="fa fa-arrow-circle-o-left">
+        <a
+          href="/"
+          style={Styles.backButton}
+          className="fa fa-arrow-circle-o-left"
+        >
           <div className="sr-only">Back</div>
         </a>
+        {err === 'success' ? <Redirect to="/home" push /> : null}
       </Container>
     )
   }
