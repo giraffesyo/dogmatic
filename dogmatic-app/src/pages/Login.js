@@ -18,6 +18,10 @@ import { Logo } from 'components/Logo'
 class Login extends React.PureComponent {
   state = { username: '', password: '', err: '', message: '' }
 
+  componentDidMount(){
+    localForage.setDriver(localForage.LOCALSTORAGE)
+  }
+
   login = async () => {
     const { username, password } = this.state
     if (!username) {

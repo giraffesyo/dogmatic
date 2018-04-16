@@ -26,6 +26,7 @@ class AddBowl extends React.PureComponent {
   state = { icon: 0, name: '', currentUser: '', err: '', message: '' }
 
   componentDidMount() {
+    localForage.setDriver(localForage.LOCALSTORAGE)
     localForage.getItem('currentUser').then(currentUser => {
       this.setState({ currentUser })
       localForage

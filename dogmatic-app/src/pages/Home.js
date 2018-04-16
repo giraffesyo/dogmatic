@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
 import { Bowls } from 'components/Bowls'
+import { Redirect } from 'react-router-dom'
 
 /*
 [
@@ -36,12 +37,10 @@ import { Bowls } from 'components/Bowls'
 */
 
 class Home extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentUser: '',
-      dogs: [],
-    }
+  state = {
+    currentUser: '',
+    dogs: [],
+    loggedIn: true,
   }
 
   setFood = (index, amount) => {
@@ -71,13 +70,14 @@ class Home extends React.PureComponent {
   refillWater = index => this.setWater(index, 100)
 
   async componentDidMount() {
+    localForage.setDriver(localForage.LOCALSTORAGE)
     await localForage
       .getItem('currentUser')
       .then(currentUser => this.setState({ currentUser }))
     const { currentUser } = this.state
     //if not logged in
     if (!currentUser) {
-      console.log('not logged in') //TODO: bring us to the login page instead
+      this.setState({ loggedIn: false })
     } else {
       localForage
         .getItem('users')
@@ -113,7 +113,7 @@ class Home extends React.PureComponent {
   }
 
   render() {
-    const { dogs } = this.state
+    const { dogs, loggedIn } = this.state
     const { refillFood, refillWater } = this
     return (
       <div>
@@ -128,6 +128,7 @@ class Home extends React.PureComponent {
               />
             </Col>
           </Row>
+          {loggedIn ? null : <Redirect to="/" />}
         </Container>
         <BottomNav />
       </div>

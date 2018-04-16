@@ -6,17 +6,15 @@ import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
 import { BowlsMB } from 'components/Bowls'
 
+
 class Mybowls extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentUser: '',
-      dogs: [],
-    }
+  state = {
+    currentUser: '',
+    dogs: [],
   }
 
   setFood = (index, amount) => {
-    const { dogs } = this.state
+    const { dogs, currentUser } = this.state
     this.setState({
       dogs: [
         ...dogs.slice(0, index),
@@ -24,10 +22,18 @@ class Mybowls extends React.PureComponent {
         ...dogs.slice(index + 1),
       ],
     })
+    const { foodLevel } = this.state.dogs[index]
+    localForage.getItem('users').then(users => {
+      users[currentUser].dogs[index] = {
+        ...users[currentUser].dogs[index],
+        foodLevel,
+      }
+      localForage.setItem('users', users)
+    })
   }
 
   setWater = (index, amount) => {
-    let { dogs } = this.state
+    let { dogs, currentUser } = this.state
     this.setState({
       dogs: [
         ...dogs.slice(0, index),
@@ -35,9 +41,18 @@ class Mybowls extends React.PureComponent {
         ...dogs.slice(index + 1),
       ],
     })
+    const { waterLevel } = this.state.dogs[index]
+    localForage.getItem('users').then(users => {
+      users[currentUser].dogs[index] = {
+        ...users[currentUser].dogs[index],
+        waterLevel,
+      }
+      localForage.setItem('users', users)
+    })
   }
 
   async componentDidMount() {
+    localForage.setDriver(localForage.LOCALSTORAGE)
     await localForage
       .getItem('currentUser')
       .then(currentUser => this.setState({ currentUser }))
@@ -56,24 +71,8 @@ class Mybowls extends React.PureComponent {
         const index = Math.floor(dogs.length * Math.random())
         if (Math.random() >= 0.5) {
           this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
-          const { waterLevel } = this.state.dogs[index]
-          localForage.getItem('users').then(users => {
-            users[currentUser].dogs[index] = {
-              ...users[currentUser].dogs[index],
-              waterLevel,
-            }
-            localForage.setItem('users', users)
-          })
         } else {
           this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
-          const { foodLevel } = this.state.dogs[index]
-          localForage.getItem('users').then(users => {
-            users[currentUser].dogs[index] = {
-              ...users[currentUser].dogs[index],
-              foodLevel,
-            }
-            localForage.setItem('users', users)
-          })
         }
       }, 100)
     }
