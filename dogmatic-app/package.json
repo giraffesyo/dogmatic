@@ -2,6 +2,7 @@
   "name": "dogmatic-app",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://uxp.mx/dogmatic/app",
   "dependencies": {
     "bootstrap-css-only": "^4.1.0",
     "font-awesome": "^4.7.0",
