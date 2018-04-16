@@ -85,12 +85,28 @@ class Home extends React.PureComponent {
 
       this.interval = setInterval(() => {
         const { dogs } = this.state
-        if (dogs.length < 1 || Math.random() < 0.8) return
+        if (dogs.length < 1 || Math.random() < 0.9) return
         const index = Math.floor(dogs.length * Math.random())
         if (Math.random() >= 0.5) {
           this.setWater(index, Math.max(0, dogs[index].waterLevel - 1))
+          const { waterLevel } = this.state.dogs[index]
+          localForage.getItem('users').then(users => {
+            users[currentUser].dogs[index] = {
+              ...users[currentUser].dogs[index],
+              waterLevel,
+            }
+            localForage.setItem('users', users)
+          })
         } else {
           this.setFood(index, Math.max(0, dogs[index].foodLevel - 1))
+          const { foodLevel } = this.state.dogs[index]
+          localForage.getItem('users').then(users => {
+            users[currentUser].dogs[index] = {
+              ...users[currentUser].dogs[index],
+              foodLevel,
+            }
+            localForage.setItem('users', users)
+          })
         }
       }, 100)
     }
