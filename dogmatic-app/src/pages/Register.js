@@ -17,7 +17,7 @@ import { Logo } from 'components/Logo'
 
 class Register extends React.PureComponent {
   state = {
-    users: {},
+    users: null,
     name: '',
     username: '',
     password: '',
@@ -46,7 +46,7 @@ class Register extends React.PureComponent {
     this.setState({ password: e.target.value })
   }
 
-  register = () => {
+  register = async () => {
     const { users, username, name, password } = this.state
     if (!username) {
       this.setState({ err: 'danger', message: 'Username cannot be blank' })
@@ -68,8 +68,8 @@ class Register extends React.PureComponent {
       }
     }
     const updatedUsers = { ...users }
-    updatedUsers[username] = { name, password, dogs: {} }
-    localForage
+    updatedUsers[username] = { name, password, dogs: [{name: 'Fido', icon: '1', waterLevel: 0, foodLevel: 100}] }
+    await localForage
       .setItem('users', updatedUsers)
       .then(() =>
         localForage.setItem('currentUser', username).then(
