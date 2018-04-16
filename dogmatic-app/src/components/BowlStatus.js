@@ -20,8 +20,8 @@ class BowlStatus extends React.PureComponent {
     return (
       <Row>
         <Col style={{ textAlign: 'center' }} xs={3}>
-          <img alt={name} style={{ height: '50%' }} src={icons[icon]} />
-          <span>{name}</span>
+          <img alt={name} style={{display: 'block', height: '50%' }} src={icons[icon]} />
+          <span style={{display: 'block'}}>{name}</span>
         </Col>
         <Col xs={9}>
           <Row>
@@ -64,8 +64,8 @@ class BowlStatusMB extends React.PureComponent {
     return (
       <Row>
         <Col style={{ textAlign: 'center' }} xs={3}>
-          <img alt={name} style={{ height: '50%' }} src={icons[icon]} />
-          <span>{name}</span>
+          <img alt={name} style={{ display: 'block', height: '50%' }} src={icons[icon]} />
+          <span style={{display: 'block'}}>{name}</span>
         </Col>
         <Col xs={9}>
           <Row>
