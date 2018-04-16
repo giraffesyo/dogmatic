@@ -1,13 +1,12 @@
 import React from 'react'
 import 'components/BottomNav.css'
 import { Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export const BottomNav = () => (
-  <Row
-    className="text-center bottomRow"
-  >
+  <Row className="text-center bottomRow">
     <Col>
-      <a href="/">
+      <Link to={'/home'}>
         <Row>
           <Col>
             <span style={{ fontSize: 48 }} className="fa fa-home" />
@@ -16,10 +15,10 @@ export const BottomNav = () => (
         <Row>
           <Col>Home</Col>
         </Row>
-      </a>
+      </Link>
     </Col>
     <Col>
-      <a>
+      <Link to={'/mybowls'}>
         <Row>
           <Col>
             <span style={{ fontSize: 48 }} className="fa fa-paw" />
@@ -28,10 +27,10 @@ export const BottomNav = () => (
         <Row>
           <Col>My Bowls</Col>
         </Row>
-      </a>
+      </Link>
     </Col>
     <Col>
-      <a>
+      <Link to={'/options'}>
         <Row>
           <Col className="finalCol">
             <span style={{ fontSize: 48 }} className="fa fa-cog" />
@@ -40,7 +39,7 @@ export const BottomNav = () => (
         <Row>
           <Col>Options</Col>
         </Row>
-      </a>
+      </Link>
     </Col>
   </Row>
 )

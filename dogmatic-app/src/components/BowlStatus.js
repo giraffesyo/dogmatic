@@ -57,4 +57,34 @@ class BowlStatus extends React.PureComponent {
   }
 }
 
-export { BowlStatus }
+class BowlStatusMB extends React.PureComponent {
+  render() {
+    const { waterLevel, foodLevel, name, icon } = this.props
+    return (
+      <Row>
+        <Col style={{ textAlign: 'center' }} xs={3}>
+          <img alt={name} style={{ height: '50%' }} src={icons[icon]} />
+          <span>{name}</span>
+        </Col>
+        <Col xs={9}>
+          <Row>
+            <Col style={{ marginTop: 5 }}>
+              <Progress animated value={waterLevel}>
+                {waterLevel}%
+              </Progress>
+            </Col>
+          </Row>
+          <Row>
+            <Col style={{ marginTop: 11 }}>
+              <Progress animated color="success" value={foodLevel}>
+                {foodLevel}%
+              </Progress>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    )
+  }
+}
+
+export { BowlStatus, BowlStatusMB }
