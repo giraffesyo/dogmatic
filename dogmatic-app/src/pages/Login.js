@@ -11,7 +11,7 @@ import {
   Alert,
 } from 'reactstrap'
 import localForage from 'localforage'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 import { Logo } from 'components/Logo'
 
@@ -118,13 +118,13 @@ class Login extends React.PureComponent {
             </Button>
           </Col>
         </Row>
-        <a
-          href="/"
+        <Link
+          to="/"
           style={Styles.backButton}
           className="fa fa-arrow-circle-o-left"
         >
           <div className="sr-only">Back</div>
-        </a>
+        </Link>
         {err === 'success' ? <Redirect to="/home" push /> : null}
       </Container>
     )

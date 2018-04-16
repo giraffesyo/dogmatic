@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
 import { BowlsMB } from 'components/Bowls'
+import { Link } from 'react-router-dom'
 
 class Mybowls extends React.PureComponent {
   state = {
@@ -98,13 +99,9 @@ class Mybowls extends React.PureComponent {
           </Row>
           <Row>
             <Col>
-            <a
-          href="/addbowl"
-          style={Styles.Add}
-          className="fa fa-plus"
-        >
-          <div className="sr-only">Add bowl</div>
-        </a>
+              <Link to="/addbowl" style={Styles.Add} className="fa fa-plus">
+                <div className="sr-only">Add bowl</div>
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -120,7 +117,7 @@ const Styles = {
     color: 'rgb(243, 178, 36)',
     paddingLeft: 16,
     paddingBottom: 16,
-  }}
-
+  },
+}
 
 export { Mybowls }

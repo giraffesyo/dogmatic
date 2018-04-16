@@ -1,37 +1,42 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'reactstrap'
 import localForage from 'localforage'
-import {Redirect} from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { Logo } from 'components/Logo'
 
 class NotLoggedIn extends React.PureComponent {
+  state = { currentUser: '' }
 
-  state = {currentUser: ''}
-
-  componentDidMount(){
-    localForage.getItem('currentUser').then(currentUser => this.setState({currentUser}))
+  componentDidMount() {
+    localForage
+      .getItem('currentUser')
+      .then(currentUser => this.setState({ currentUser }))
   }
 
   render() {
-    const {currentUser} = this.state
+    const { currentUser } = this.state
     return (
       <Container className="text-center">
         <Logo marginBottom={'20vh'} />
         <Row style={Styles.row}>
           <Col>
-            <Button href="/login" block style={Styles.button}>
-              Log In
-            </Button>
+            <Link to="/login">
+              <Button block style={Styles.button}>
+                Log In
+              </Button>
+            </Link>
           </Col>
         </Row>
         <Row style={Styles.row}>
           <Col>
-            <Button href="/register" block style={Styles.button}>
-              Sign Up
-            </Button>
+            <Link to="/register">
+              <Button block style={Styles.button}>
+                Sign Up
+              </Button>
+            </Link>
           </Col>
         </Row>
-        {currentUser?<Redirect to="/home"></Redirect>: null}
+        {currentUser ? <Redirect to="/home" /> : null}
       </Container>
     )
   }

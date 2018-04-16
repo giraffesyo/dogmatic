@@ -3,6 +3,7 @@ import React from 'react'
 import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
 
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, Input, Button } from 'reactstrap'
 
 class Feedback extends React.PureComponent {
@@ -30,7 +31,7 @@ class Feedback extends React.PureComponent {
               <h1 style={{ color: 'rgb(243, 178, 36)' }}>About Us</h1>
             </Col>
             <Col>
-              <a
+              <Link
                 style={{
                   fontSize: '64px',
                   color: 'rgb(243, 178, 36)',
@@ -39,11 +40,11 @@ class Feedback extends React.PureComponent {
                   paddingLeft: 16,
                   paddingBottom: 16,
                 }}
-                href="/options"
+                to="/options"
                 className="fa fa-arrow-circle-o-left"
               >
                 <div className="sr-only">Back</div>
-              </a>
+              </Link>
             </Col>
           </Row>
           {received ? (
@@ -80,9 +81,11 @@ function FeedbackArea(props) {
           </Button>
         </Col>
         <Col>
-          <Button href="/options" block style={Styles.button}>
-            Cancel
-          </Button>
+          <Link to="/options">
+            <Button block style={Styles.button}>
+              Cancel
+            </Button>
+          </Link>
         </Col>
       </Row>
     </React.Fragment>
