@@ -69,7 +69,7 @@ class AddBowl extends React.PureComponent {
     const { name, err } = this.state
     const { handleNameChange, chooseIcon, addDog } = this
     return (
-      <Col>
+      <div>
         <Header />
         <Container style={{ color: 'rgb(26, 154, 189)', marginTop: '5vh' }}>
           <Row>
@@ -142,7 +142,7 @@ class AddBowl extends React.PureComponent {
           {err==="success" ? <Redirect to="/mybowls" /> : null}
         </Container>
         <BottomNav />
-      </Col>
+      </div>
     )
   }
 }
