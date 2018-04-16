@@ -3,8 +3,9 @@ import { Progress, Row, Col } from 'reactstrap'
 import icon1 from 'images/icons/icon1.png'
 import icon2 from 'images/icons/icon2.png'
 import icon3 from 'images/icons/icon3.png'
+import icon4 from 'images/icons/icon4.png'
 
-const icons = [icon1, icon2, icon3]
+const icons = [icon1, icon2, icon3, icon4]
 
 class BowlStatus extends React.PureComponent {
   render() {
