@@ -16,7 +16,7 @@ import { AddBowl } from 'pages/AddBowl'
 
 
 ReactDOM.render(
-  <BrowserRouter basename="/app">
+  <BrowserRouter basename="/dogmatic/app">
     <Switch>
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
