@@ -10,6 +10,8 @@ import { Register } from 'pages/Register'
 import { Home } from 'pages/Home'
 import { Options } from 'pages/Options'
 import { Mybowls } from 'pages/Mybowls'
+import { About } from 'pages/About'
+import { Feedback } from 'pages/Feedback'
 
 
 ReactDOM.render(
@@ -20,6 +22,8 @@ ReactDOM.render(
       <Route exact path='/home' component={Home} />
       <Route exact path='/mybowls' component={Mybowls} />
       <Route exact path='/options' component={Options} />
+      <Route exact path='/about' component={About} />
+      <Route exact path='/feedback' component={Feedback} />
       <Route exact path="/" component={App} />
       <Route component={App} />
     </Switch>
