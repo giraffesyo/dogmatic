@@ -12,6 +12,7 @@ import { Options } from 'pages/Options'
 import { Mybowls } from 'pages/Mybowls'
 import { About } from 'pages/About'
 import { Feedback } from 'pages/Feedback'
+import { AddBowl } from 'pages/AddBowl'
 
 
 ReactDOM.render(
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route exact path='/options' component={Options} />
       <Route exact path='/about' component={About} />
       <Route exact path='/feedback' component={Feedback} />
+      <Route exact path='/addbowl' component={AddBowl} />
       <Route exact path="/" component={App} />
       <Route component={App} />
     </Switch>
