@@ -99,7 +99,7 @@ class Mybowls extends React.PureComponent {
           <Row>
             <Col>
             <a
-          href="/"
+          href="/addbowl"
           style={Styles.Add}
           className="fa fa-plus"
         >
