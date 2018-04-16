@@ -13,10 +13,30 @@ import {
 import { Logo } from 'components/Logo'
 
 class Login extends React.PureComponent {
+  state = { users: {}, username: "", password: "" }
+
+  login = () => {
+    const {username, password} = this.state
+    
+  }
+
+  onUsernameChange = (e) =>
+  {
+    this.setState({username: e.target.value})
+  }
+
+  onPasswordChange = (e) =>
+  {
+    this.setState({password: e.target.value})
+  }
+
   render() {
-    let offset = 1
-    let labelSize = 3
-    let inputSize = 7
+    const offset = 1
+    const labelSize = 3
+    const inputSize = 7
+
+    const { login, onPasswordChange, onUsernameChange } = this
+    const { username, password } = this.state
     return (
       <Container className="text-center">
         <Logo marginBottom={'5vh'} />
@@ -29,6 +49,8 @@ class Login extends React.PureComponent {
                 </Label>
                 <Col xs={inputSize}>
                   <Input
+                    onChange={onUsernameChange}
+                    value={username}
                     type="email"
                     name="email"
                     id="userEmail"
@@ -45,6 +67,8 @@ class Login extends React.PureComponent {
                 </Label>
                 <Col xs={inputSize}>
                   <Input
+                    onChange={onPasswordChange}
+                    value={password}
                     type="password"
                     name="password"
                     id="userPassword"
@@ -57,12 +81,16 @@ class Login extends React.PureComponent {
         </Row>
         <Row style={{ marginTop: '5vh' }}>
           <Col>
-            <Button block style={Styles.button}>
+            <Button onClick={login} block style={Styles.button}>
               Log In
             </Button>
           </Col>
         </Row>
-        <a href="/" style={Styles.backButton} className="fa fa-arrow-circle-o-left">
+        <a
+          href="/"
+          style={Styles.backButton}
+          className="fa fa-arrow-circle-o-left"
+        >
           <div className="sr-only">Back</div>
         </a>
       </Container>
