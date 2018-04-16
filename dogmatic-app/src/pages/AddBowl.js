@@ -49,7 +49,7 @@ class AddBowl extends React.PureComponent {
     const { currentUser, dogs, name, icon } = this.state
 
     if (dogs.length >= 4) {
-      console.log('Sorry too many dogs') //TODO: change page to show this
+      console.log('Sorry too many dogs') //Should never happen since you can't get to the page
     } else {
       localForage.getItem('users').then(users => {
         users[currentUser].dogs.push({
