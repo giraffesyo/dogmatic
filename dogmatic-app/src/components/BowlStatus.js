@@ -1,6 +1,5 @@
 import React from 'react'
 import { Progress, Row, Col } from 'reactstrap'
-import 'components/BowlStatus.css'
 import icon1 from 'images/icons/icon1.png'
 import icon2 from 'images/icons/icon2.png'
 import icon3 from 'images/icons/icon3.png'
