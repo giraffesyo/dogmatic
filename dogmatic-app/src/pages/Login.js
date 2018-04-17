@@ -18,7 +18,6 @@ import { Logo } from 'components/Logo'
 class Login extends React.PureComponent {
   state = { username: '', password: '', err: '', message: '' }
 
-
   login = async () => {
     const { username, password } = this.state
     if (!username) {
@@ -64,6 +63,7 @@ class Login extends React.PureComponent {
 
     const { login, onPasswordChange, onUsernameChange } = this
     const { username, password, err, message } = this.state
+
     return (
       <Container className="text-center">
         <Logo />
