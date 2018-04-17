@@ -11,6 +11,7 @@ class Mybowls extends React.PureComponent {
   state = {
     currentUser: '',
     dogs: [],
+    plusVisible: true,
   }
 
   setFood = (index, amount) => {
@@ -60,9 +61,11 @@ class Mybowls extends React.PureComponent {
     if (!currentUser) {
       console.log('not logged in') //TODO: bring us to the login page instead
     } else {
-      localForage
-        .getItem('users')
-        .then(users => this.setState({ dogs: users[currentUser].dogs }))
+      localForage.getItem('users').then(users =>
+        this.setState({ dogs: users[currentUser].dogs }, () => {
+          if (this.state.dogs.length >= 4) this.setState({ plusVisible: false })
+        })
+      )
 
       if (this.interval == null) {
         this.interval = setInterval(() => {
@@ -87,7 +90,7 @@ class Mybowls extends React.PureComponent {
   }
 
   render() {
-    const { dogs } = this.state
+    const { dogs, plusVisible } = this.state
     return (
       <div>
         <Header />
@@ -97,13 +100,15 @@ class Mybowls extends React.PureComponent {
               <BowlsMB dogs={dogs} />
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <Link to="/addbowl" style={Styles.Add} className="fa fa-plus">
-                <div className="sr-only">Add bowl</div>
-              </Link>
-            </Col>
-          </Row>
+          {plusVisible ? (
+            <Row>
+              <Col>
+                <Link to="/addbowl" style={Styles.Add} className="fa fa-plus">
+                  <div className="sr-only">Add bowl</div>
+                </Link>
+              </Col>
+            </Row>
+          ) : null}
         </Container>
         <BottomNav />
       </div>
