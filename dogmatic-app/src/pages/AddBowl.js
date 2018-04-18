@@ -122,7 +122,7 @@ class AddBowl extends React.PureComponent {
                           borderRadius: 15,
                           width: '50%',
                         }
-                      : { width: '50%'}
+                      : { width: '50%' }
                   }
                   onClick={chooseIcon}
                   id={i}

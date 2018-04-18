@@ -12,6 +12,7 @@ class Home extends React.PureComponent {
     currentUser: '',
     dogs: [],
     loggedIn: true,
+    redirectAddBowl: false,
   }
 
   setFood = (index, amount) => {
@@ -68,7 +69,6 @@ class Home extends React.PureComponent {
       localForage
         .getItem('users')
         .then(users => this.setState({ dogs: users[currentUser].dogs }))
-
       if (this.interval == null) {
         this.interval = setInterval(() => {
           const { dogs } = this.state
@@ -81,6 +81,8 @@ class Home extends React.PureComponent {
           }
         }, 100)
       }
+      const { dogs } = this.state
+      if (dogs.length < 1) this.setState({ redirectAddBowl: true })
     }
   }
 
@@ -91,12 +93,12 @@ class Home extends React.PureComponent {
     }
   }
   render() {
-    const { dogs, loggedIn } = this.state
+    const { dogs, loggedIn, redirectAddBowl } = this.state
     const { refillFood, refillWater } = this
     return (
       <div>
         <Header />
-        <Container style={{ clear: 'both'}}>
+        <Container style={{ clear: 'both' }}>
           <Row>
             <Col>
               <Bowls
@@ -107,6 +109,7 @@ class Home extends React.PureComponent {
             </Col>
           </Row>
           {loggedIn ? null : <Redirect to="/" />}
+          {redirectAddBowl ? <Redirect to="/addbowl" /> : null}
         </Container>
         <BottomNav />
       </div>
