@@ -25,7 +25,7 @@ export const BottomNav = () => (
           </Col>
         </Row>
         <Row>
-          <Col>My Bowls</Col>
+          <Col>Bowls</Col>
         </Row>
       </Link>
     </Col>

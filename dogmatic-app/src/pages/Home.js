@@ -96,7 +96,7 @@ class Home extends React.PureComponent {
     return (
       <div>
         <Header />
-        <Container style={{ clear: 'both', marginTop: '10vh' }}>
+        <Container style={{ clear: 'both'}}>
           <Row>
             <Col>
               <Bowls

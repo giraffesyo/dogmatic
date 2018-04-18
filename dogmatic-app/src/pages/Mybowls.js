@@ -94,7 +94,7 @@ class Mybowls extends React.PureComponent {
     return (
       <div>
         <Header />
-        <Container style={{ clear: 'both', marginTop: '10vh' }}>
+        <Container style={{ clear: 'both' }}>
           <Row>
             <Col>
               <BowlsMB dogs={dogs} />
