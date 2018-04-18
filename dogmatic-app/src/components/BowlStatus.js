@@ -1,12 +1,6 @@
 import React from 'react'
 import { Progress, Row, Col } from 'reactstrap'
-import icon1 from 'images/icons/icon1.png'
-import icon2 from 'images/icons/icon2.png'
-import icon3 from 'images/icons/icon3.png'
-import icon4 from 'images/icons/icon4.png'
-
-const icons = [icon1, icon2, icon3, icon4]
-
+import {Dog} from 'components/Dog'
 
 class BowlStatus extends React.PureComponent {
   render() {
@@ -25,13 +19,8 @@ class BowlStatus extends React.PureComponent {
     const progressRowWidth = 9
     return (
       <Row>
-        <Col style={{ textAlign: 'center' }} xs={bigIconWidth}>
-          <img
-            alt={name}
-            style={{ display: 'block', height: '50%' }}
-            src={icons[icon]}
-          />
-          <span style={{ display: 'block' }}>{name}</span>
+        <Col xs={bigIconWidth}>
+          <Dog icon={icon} name={name} size="50%" />
         </Col>
         <Col xs={progressRowWidth}>
           <Row>
