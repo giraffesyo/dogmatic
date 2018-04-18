@@ -11,6 +11,7 @@ import { Mybowls } from 'pages/Mybowls'
 import { About } from 'pages/About'
 import { Feedback } from 'pages/Feedback'
 import { AddBowl } from 'pages/AddBowl'
+import { DeleteDog } from 'pages/DeleteDog'
 
 class App extends React.PureComponent {
   render() {
@@ -18,6 +19,7 @@ class App extends React.PureComponent {
       <BrowserRouter basename="/dogmatic/app">
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/deletedog" component={DeleteDog} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/mybowls" component={Mybowls} />
