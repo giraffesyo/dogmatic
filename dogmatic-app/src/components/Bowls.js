@@ -1,5 +1,5 @@
 import React from 'react'
-import { BowlStatus, BowlStatusMB } from 'components/BowlStatus'
+import { BowlStatus } from 'components/BowlStatus'
 import { Row, Col } from 'reactstrap'
 
 class Bowls extends React.PureComponent {
@@ -23,24 +23,4 @@ class Bowls extends React.PureComponent {
   }
 }
 
-
-class BowlsMB extends React.PureComponent {
-  render() {
-    const { dogs } = this.props
-    return (
-      <React.Fragment>
-        {dogs.map((dog, i) => (
-          <Row key={`bowl-${i}`}>
-            <Col>
-              <BowlStatusMB
-                {...dog}
-              />
-            </Col>
-          </Row>
-        ))}
-      </React.Fragment>
-    )
-  }
-}
-
-export { Bowls, BowlsMB }
+export { Bowls }

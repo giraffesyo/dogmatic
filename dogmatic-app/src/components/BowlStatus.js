@@ -7,6 +7,7 @@ import icon4 from 'images/icons/icon4.png'
 
 const icons = [icon1, icon2, icon3, icon4]
 
+
 class BowlStatus extends React.PureComponent {
   render() {
     const {
@@ -17,37 +18,52 @@ class BowlStatus extends React.PureComponent {
       refillFood,
       refillWater,
     } = this.props
+
+    const bigIconWidth = 3
+    const refillWidth = 1
+    const smallIconWidth = 1
+    const progressRowWidth = 9
     return (
       <Row>
-        <Col style={{ textAlign: 'center' }} xs={3}>
-          <img alt={name} style={{display: 'block', height: '50%' }} src={icons[icon]} />
-          <span style={{display: 'block'}}>{name}</span>
+        <Col style={{ textAlign: 'center' }} xs={bigIconWidth}>
+          <img
+            alt={name}
+            style={{ display: 'block', height: '50%' }}
+            src={icons[icon]}
+          />
+          <span style={{ display: 'block' }}>{name}</span>
         </Col>
-        <Col xs={9}>
+        <Col xs={progressRowWidth}>
           <Row>
-            <Col xs={9} style={{ marginTop: 5 }}>
+            <Col xs={smallIconWidth}>
+              <span className="fa fa-tint" />
+            </Col>
+            <Col style={Styles.WaterBar}>
               <Progress animated value={waterLevel}>
                 {waterLevel}%
               </Progress>
             </Col>
-            <Col xs={3}>
+            <Col style={Styles.RefillCol} xs={refillWidth}>
               <span
                 onClick={refillWater}
-                style={{ fontSize: 24, lineHeight: 1 }}
+                style={Styles.Refill}
                 className="fa fa-retweet"
               />
             </Col>
           </Row>
-          <Row>
-            <Col xs={9} style={{ marginTop: 5 }}>
+          <Row style={Styles.FoodBar}>
+            <Col xs={refillWidth}>
+              <span className="fa fa-cutlery" />
+            </Col>
+            <Col>
               <Progress animated color="success" value={foodLevel}>
                 {foodLevel}%
               </Progress>
             </Col>
-            <Col xs={3}>
+            <Col style={Styles.RefillCol} xs={refillWidth}>
               <span
                 onClick={refillFood}
-                style={{ fontSize: 24, lineHeight: 1 }}
+                style={Styles.Refill}
                 className="fa fa-retweet"
               />
             </Col>
@@ -58,34 +74,21 @@ class BowlStatus extends React.PureComponent {
   }
 }
 
-class BowlStatusMB extends React.PureComponent {
-  render() {
-    const { waterLevel, foodLevel, name, icon } = this.props
-    return (
-      <Row>
-        <Col style={{ textAlign: 'center' }} xs={3}>
-          <img alt={name} style={{ display: 'block', height: '50%' }} src={icons[icon]} />
-          <span style={{display: 'block'}}>{name}</span>
-        </Col>
-        <Col xs={9}>
-          <Row>
-            <Col style={{ marginTop: 5 }}>
-              <Progress animated value={waterLevel}>
-                {waterLevel}%
-              </Progress>
-            </Col>
-          </Row>
-          <Row>
-            <Col style={{ marginTop: 11 }}>
-              <Progress animated color="success" value={foodLevel}>
-                {foodLevel}%
-              </Progress>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    )
-  }
+const Styles = {
+  RefillCol: {
+    paddingRight: 0,
+    paddingLeft: 0,
+  },
+  Refill: {
+    fontSize: '1em',
+    lineHeight: 1,
+  },
+  WaterBar: {
+    marginTop: 4,
+  },
+  FoodBar: {
+    marginTop: 11,
+  },
 }
 
-export { BowlStatus, BowlStatusMB }
+export { BowlStatus }

@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 
 import { Header } from 'components/Header'
 import { BottomNav } from 'components/BottomNav'
-import { BowlsMB } from 'components/Bowls'
+import { Bowls } from 'components/Bowls'
 import { Link } from 'react-router-dom'
 
 class Mybowls extends React.PureComponent {
@@ -97,7 +97,7 @@ class Mybowls extends React.PureComponent {
         <Container style={{ clear: 'both' }}>
           <Row>
             <Col>
-              <BowlsMB dogs={dogs} />
+              <Bowls dogs={dogs} />
             </Col>
           </Row>
           {plusVisible ? (
