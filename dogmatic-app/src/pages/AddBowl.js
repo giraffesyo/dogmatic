@@ -10,6 +10,8 @@ import {
   Button,
 } from 'reactstrap'
 
+import 'pages/AddBowl.css'
+
 import { Redirect } from 'react-router-dom'
 
 import localForage from 'localforage'
@@ -48,7 +50,10 @@ class AddBowl extends React.PureComponent {
   addDog = () => {
     const { currentUser, dogs, name, icon } = this.state
 
-    if (dogs.length >= 4) {
+    if(!name){
+      this.setState({err: 'danger', message: 'You must enter a name'})
+    } 
+    else if (dogs.length >= 4) {
       console.log('Sorry too many dogs') //Should never happen since you can't get to the page
     } else {
       localForage.getItem('users').then(users => {
@@ -66,8 +71,10 @@ class AddBowl extends React.PureComponent {
   }
   render() {
     const currentIcon = this.state.icon
-    const { name, err } = this.state
+    const { name, err, message } = this.state
     const { handleNameChange, chooseIcon, addDog } = this
+
+
     return (
       <div>
         <Header />
@@ -88,7 +95,8 @@ class AddBowl extends React.PureComponent {
                     value={name}
                     onChange={handleNameChange}
                     id="name"
-                    placeholder="Dog's name"
+                    placeholder={message||"Dog's name"}
+                    className={message? "error" : ""}
                   />
                 </FormGroup>
               </Col>

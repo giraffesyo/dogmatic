@@ -1,0 +1,12 @@
+.error::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+.error:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+}
+
+.error::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;
+}
