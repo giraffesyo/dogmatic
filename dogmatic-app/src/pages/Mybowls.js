@@ -12,6 +12,7 @@ class Mybowls extends React.PureComponent {
     currentUser: '',
     dogs: [],
     plusVisible: true,
+    minusVisible: true,
   }
 
   async componentDidMount() {
@@ -27,12 +28,13 @@ class Mybowls extends React.PureComponent {
     const { dogs } = this.state
     if (dogs.length >= 4) {
       this.setState({ plusVisible: false })
+    } else if (dogs.length < 1) {
+      this.setState({ minusVisible: false })
     }
   }
 
-
   render() {
-    const { dogs, plusVisible } = this.state
+    const { dogs, plusVisible, minusVisible } = this.state
     return (
       <div>
         <Header />
@@ -56,19 +58,24 @@ class Mybowls extends React.PureComponent {
               )}
             </Col>
             <Col xs={4}>
-              <Link
-                to="/deletedog"
-                style={Styles.Add}
-                className="fa fa-minus"
-              />
+              {minusVisible ? (
+                <Link
+                  to="/deletedog"
+                  style={Styles.Add}
+                  className="fa fa-minus"
+                />
+              ) : (
+                <span
+                  style={{ ...Styles.Add, opacity: 0.5 }}
+                  className="fa fa-minus"
+                />
+              )}
             </Col>
           </Row>
           {plusVisible ? null : (
-            <Row style={{marginTop: 10}}>
-              <Col >
-                <Alert color="warning">
-                  Maximum dogs added.
-                </Alert>
+            <Row style={{ marginTop: 10 }}>
+              <Col>
+                <Alert color="warning">Maximum dogs added.</Alert>
               </Col>
             </Row>
           )}
