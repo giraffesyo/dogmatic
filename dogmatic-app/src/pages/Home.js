@@ -66,7 +66,7 @@ class Home extends React.PureComponent {
     if (!currentUser) {
       this.setState({ loggedIn: false })
     } else {
-      localForage
+      await localForage
         .getItem('users')
         .then(users => this.setState({ dogs: users[currentUser].dogs }))
       if (this.interval == null) {
