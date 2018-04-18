@@ -133,7 +133,7 @@ class AddBowl extends React.PureComponent {
           </Row>
 
           <Row>
-            <Col xs={{ offset: 8, size: 2 }} style={{ marginTop: 20 }}>
+            <Col xs={{ offset: 7, size: 2 }} style={{ marginTop: 20 }}>
               <Button onClick={addDog} block style={Styles.button}>
                 Add Dog
               </Button>
