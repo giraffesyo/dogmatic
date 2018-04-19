@@ -1,7 +1,7 @@
 .bottomRow{
   color: rgb(243, 178, 36);
-  margin-top: 10vh;
-  padding: 0;
+  margin:0;
+  padding: 0px;
   height: 10vh;
   width: 100vw;
   position: absolute;
@@ -12,7 +12,7 @@
 }
 
 .bottomRow a {
-  color: rgb(243, 178, 36);
+  color:rgb(243, 178, 36);
 }
 
 .bottomRow a:active {

@@ -28,7 +28,7 @@ class Feedback extends React.PureComponent {
         >
           <Row>
             <Col>
-              <h1 style={{ color: 'rgb(243, 178, 36)' }}>About Us</h1>
+              <h1 style={{ color: 'rgb(243, 178, 36)' }}>Feedback</h1>
             </Col>
             <Col>
               <Link

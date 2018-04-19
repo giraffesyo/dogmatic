@@ -90,6 +90,7 @@ const Styles = {
   Add: {
     fontSize: '64px',
     color: 'rgb(243, 178, 36)',
+    marginLeft: 30,
     padding: 10,
     borderRadius: 20,
     backgroundColor: 'rgb(26, 154, 189)',

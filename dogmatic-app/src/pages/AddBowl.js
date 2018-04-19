@@ -52,7 +52,7 @@ class AddBowl extends React.PureComponent {
 
     if(!name){
       this.setState({err: 'danger', message: 'You must enter a name'})
-    } 
+    }
     else if (dogs.length >= 4) {
       console.log('Sorry too many dogs') //Should never happen since you can't get to the page
     } else {

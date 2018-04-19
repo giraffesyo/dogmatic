@@ -32,7 +32,7 @@ class Options extends React.PureComponent {
     return (
       <div>
         <Header />
-        <Container style={{fontSize: 30, marginLeft: '5vw', color: 'rgb(26, 154, 189)' }}>
+        <Container style={{fontSize: 25, marginLeft: '5vw', color: 'rgb(26, 154, 189)' }}>
           <Row style={{ marginTop: '10vh' }}>
             <Col>Name: {name}</Col>
           </Row>
