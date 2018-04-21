@@ -9,7 +9,7 @@ export const BottomNav = () => (
       <Link to={'/home'}>
         <Row>
           <Col>
-            <span style={{ fontSize: 48 }} className="fa fa-home" />
+            <span className="fa fa-home" />
           </Col>
         </Row>
         <Row>
@@ -21,7 +21,7 @@ export const BottomNav = () => (
       <Link to={'/mybowls'}>
         <Row>
           <Col>
-            <span style={{ fontSize: 48 }} className="fa fa-paw" />
+            <span className="fa fa-paw" />
           </Col>
         </Row>
         <Row>
@@ -33,7 +33,7 @@ export const BottomNav = () => (
       <Link to={'/options'}>
         <Row>
           <Col className="finalCol">
-            <span style={{ fontSize: 48 }} className="fa fa-cog" />
+            <span className="fa fa-cog" />
           </Col>
         </Row>
         <Row>
