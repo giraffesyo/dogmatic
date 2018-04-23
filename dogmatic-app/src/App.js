@@ -1,7 +1,7 @@
 import React from 'react'
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
+import { Router, Route, Switch } from 'react-router-dom'
+import createBrowserHistory from 'history/createBrowserHistory'
+import ReactGA from 'react-ga'
 import { NotLoggedIn } from 'pages/NotLoggedIn'
 import { Login } from 'pages/Login'
 import { Register } from 'pages/Register'
@@ -13,10 +13,23 @@ import { Feedback } from 'pages/Feedback'
 import { AddBowl } from 'pages/AddBowl'
 import { DeleteDog } from 'pages/DeleteDog'
 
+const history = createBrowserHistory()
+history.listen((location, action) => {
+  //console.log(location.pathname)
+  ReactGA.set({ page: location.pathname })
+  ReactGA.pageview(location.pathname)
+})
+
 class App extends React.PureComponent {
+  componentDidMount() {
+    //console.log(history.location.pathname)
+    ReactGA.set({ page: history.location.pathname })
+    ReactGA.pageview(history.location.pathname)
+  }
+
   render() {
     return (
-      <BrowserRouter basename="/dogmatic/app">
+      <Router history={history} basename="/dogmatic/app">
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/deletedog" component={DeleteDog} />
@@ -30,7 +43,7 @@ class App extends React.PureComponent {
           <Route exact path="/" component={NotLoggedIn} />
           <Route component={NotLoggedIn} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     )
   }
 }

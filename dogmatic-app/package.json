@@ -2,13 +2,14 @@
   "name": "dogmatic-app",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://uxp.mx/dogmatic/app",
+  "homepage": "http://uxp.mx/dogmatic/app",
   "dependencies": {
     "bootstrap-css-only": "^4.1.0",
     "font-awesome": "^4.7.0",
     "localforage": "^1.7.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-ga": "^2.5.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "reactstrap": "^5.0.0-beta.3"
