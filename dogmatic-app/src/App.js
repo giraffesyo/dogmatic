@@ -13,6 +13,7 @@ import { Feedback } from 'pages/Feedback'
 import { AddBowl } from 'pages/AddBowl'
 import { DeleteDog } from 'pages/DeleteDog'
 
+ReactGA.initialize('UA-44000145-3')
 const history = createBrowserHistory()
 history.listen((location, action) => {
   //console.log(location.pathname)
