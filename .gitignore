@@ -1,13 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/dogmatic-app/node_modules
+node_modules
 
-# testing
-/dogmatic-app//coverage
-
-# production
-/dogmatic-app/build
 
 # misc
 .DS_Store
