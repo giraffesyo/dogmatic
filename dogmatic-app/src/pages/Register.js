@@ -25,7 +25,7 @@ class Register extends React.PureComponent {
     err: '',
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     localForage
       .getItem('users')
       .then(users => this.setState({ users }))
@@ -46,7 +46,7 @@ class Register extends React.PureComponent {
     this.setState({ password: e.target.value })
   }
 
-  register = async () => {
+  register = () => {
     const { users, username, name, password } = this.state
     if (!username) {
       this.setState({ err: 'danger', message: 'Username cannot be blank' })
@@ -73,7 +73,7 @@ class Register extends React.PureComponent {
       password,
       dogs: [],
     }
-    await localForage
+    localForage
       .setItem('users', updatedUsers)
       .then(() =>
         localForage.setItem('currentUser', username).then(
@@ -171,7 +171,7 @@ class Register extends React.PureComponent {
         >
           <div className="sr-only">Back</div>
         </Link>
-        {err === 'success' ? <Redirect to="/addbowl" push /> : null}
+        {/*err === 'success' ? <Redirect to="/addbowl" push /> : null*/}
       </Container>
     )
   }
