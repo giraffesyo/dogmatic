@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "deploy":
-      "cd ./dogmatic-app && yarn build && cd ../landingHTML && rm -r app && mv ../dogmatic-app/build ./app && gh-pages -d . -b gh-pages"
+      "cd ./dogmatic-app && yarn build && cd ../landingHTML && rm -r app && mv ../dogmatic-app/build ./app && gh-pages -d . -b gh-pages",
+      "deploy-landing": "cd ./landingHTML && gh-pages -d . -b gh-pages"
   },
   "dependencies": {
     "gh-pages": "^1.1.0"
