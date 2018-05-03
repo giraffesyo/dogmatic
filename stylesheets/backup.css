@@ -1,0 +1,36 @@
+header {
+  position: relative;
+  height: 400px;
+  background-image:url(../images/eatingdogs-cropped.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.logo {
+  height: 80px;
+  padding: 5px 0 0 10px;
+  float: left;
+}
+
+nav ul {
+  float: right;
+}
+
+nav li {
+  display: inline-block;
+  padding-right: 40px;
+  padding-top: 5px;
+
+}
+
+nav a {
+  color: rgb(53, 125, 207);
+  background-color: rgb(216, 211, 211);
+  padding: 5px;
+}
