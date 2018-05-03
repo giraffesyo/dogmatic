@@ -11,7 +11,7 @@ import {
   Alert,
 } from 'reactstrap'
 import localForage from 'localforage'
-import { Redirect, Link } from 'react-router-dom'
+import { /*Redirect,*/ Link } from 'react-router-dom'
 
 import { Logo } from 'components/Logo'
 
